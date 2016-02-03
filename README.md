@@ -1,6 +1,10 @@
 # emotes
 emotes from the old tastyplug extension
 
+## building
+you need node.js and npm.
+after you `npm install` in the directory, run `npm run build`
+
 ## about
 so you put files in the `emotes/` folder in whatever subdirectory you want
 the filename should be something like `butts.png` if i want to make an emote called butts.  you should only have A-Z (a-z), 0-9, \_, or - in the filename.  that means that if i want to make a `butts!` emote, i would name the file something like `butts_bang.png` and create a file called `butts_bang.png.txt` in the same directory with what i want to call the emote (so it would only have `butts!` inside).  Otherwise, if you are only using the characters i listed earlier, the emote name will be automatically pulled from the filename.
