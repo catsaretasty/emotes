@@ -1,0 +1,27 @@
+.emote-container {
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  align-items: center;
+  color: #eee;
+  margin: 1rem;
+}
+
+.emote-image {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex: auto;
+  height: 100%;
+  width:  100%;
+}
+
+.emote-header {
+  margin: 0;
+}
+
+
+
+/*.emote-header, .emote-info{
+  text-align: center;
+}*/

@@ -88,7 +88,7 @@ function makeEmoteLists(emotes) {
 
     return Promise.try(function (emote_list) {
         return emote_list;
-    }, emote_list);
+    }, emote_list_full);
 }
 
 function addToEmoteList(emote, emote_list) {
@@ -111,7 +111,11 @@ fs.ensureDirAsync(output_dir)
     .then(makeEmoteDisplayPage);
 
 function makeEmoteDisplayPage(emotes) {
-    var hbs = fs.readFileSync('index.hbs');
+    var hbs = fs.readFileSync('app/index.hbs');
+
+    handlebars.registerHelper('addPix', function(size) {
+        return parseInt(size) + 10;
+    });
 
     var template = handlebars.compile(hbs.toString());
     fs.outputFileAsync(output_dir + 'index.html', template({emotes: emotes.emotes}))
