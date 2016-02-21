@@ -19,6 +19,4 @@ html
             noscript
               img(src='#{emote.url}')
             img.b-lazy(src='loading.gif', data-src='#{emote.url}')
-    script(src='emotes.js')
-    script.
-      require('emotes').init();
+    script(async, defer, src='emotes.js', onload='require("emotes").init()')
