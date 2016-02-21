@@ -122,14 +122,22 @@ fs.ensureDirAsync(output_dir)
 
 function makeEmoteDisplayPage(emotes) {
     var css = fs.readFileSync(output_dir + 'emotes.css');
-    var html = jade.renderFile('app/index.jade', {emotes: emotes, css: css});
+    var index = jade.renderFile('app/index.jade', {emotes: emotes, css: css});
+    var noscript = jade.renderFile('app/noscript.jade', {emotes: emotes, css: css});
 
-    fs.outputFileAsync(output_dir + 'index.html', html)
+    fs.outputFileAsync(output_dir + 'index.html', index)
         .then(function (err) {
             if (err) {
                 console.error(err);
             }
             console.log('wrote display page!');
         });
-    return html;
+    fs.outputFileAsync(output_dir + 'noscript/index.html', noscript)
+        .then(function (err) {
+            if (err) {
+                console.error(err);
+            }
+            console.log('wrote noscript display page!');
+        });
+    return index;
 }

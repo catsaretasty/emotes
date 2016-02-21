@@ -9,18 +9,13 @@ html
       #{css}
   body
     header.container.header
-      div.title
+      div.title(style='margin: 0 auto')
         h1 Tastycat Emotes
         span Contribute emotes #[a(href='https://github.com/catsaretasty/emotes') here.]
-      #search-box
     hr
     #emotes.container
-      noscript
-        h1 Hi, JavaScript-disabled user!  The images below won't load without JavaScript.  Turn on JavaScript
-          |  to view, or #[a(href='noscript/') visit the noscript page] (this might hurt your browser).
       each emote in emotes
         .emote-container
           h4.emote-header #{emote.name}
           .emote-image
-            img.b-lazy(src='loading.gif', data-src='#{emote.url}', alt="#{emote.name}")
-    script(async, defer, src='emotes.js', onload='require("emotes").init()')
+            img(src='#{emote.url}', alt="#{emote.name}")
