@@ -14,10 +14,10 @@ html
         span Contribute emotes #[a(href='https://github.com/catsaretasty/emotes') here.]
       #search-box
     hr
+    noscript
+      h1 Hi, JavaScript-disabled user!  The images below won't load without JavaScript.  Turn on JavaScript
+        |  to view, or #[a(href='noscript/') visit the noscript page] (this might hurt your browser).
     #emotes.container
-      noscript
-        h1 Hi, JavaScript-disabled user!  The images below won't load without JavaScript.  Turn on JavaScript
-          |  to view, or #[a(href='noscript/') visit the noscript page] (this might hurt your browser).
       each emote in emotes
         .emote-container
           h4.emote-header #{emote.name}
