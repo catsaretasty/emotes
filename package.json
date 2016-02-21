@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "node node_modules/brunch/bin/brunch build --production && node index.js"
+    "build": "node node_modules/brunch/bin/brunch build --production && node build.js"
   },
   "repository": {
     "type": "git",
