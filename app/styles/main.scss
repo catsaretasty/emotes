@@ -1,7 +1,84 @@
 @import 'emote';
 
+// Sizes
+$break-small: 480px;
+$break-large: 1200px;
+
+$max-container-width: 960px;
+
+// Colors
+$divider-out: rgba(40, 40, 49, .25);
+$divider-in: rgba(73, 73, 84, 1);
+
+$background: #1c1c1f;
+$text: #A8A8AD;
+
+$input: #44444B;
+$input-focus: #83838B;
+
 .container {
+  margin: 0 auto;
+  clear: both;
   display: flex;
   flex-flow: row wrap;
-  background-color: #2b2b2b;
+  width: 100%;
+  @media screen and (min-width: $break-large) {
+    width: $max-container-width;
+  }
 }
+
+#emote-list {
+  justify-content: space-between;
+}
+
+.header {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  @media screen and (min-width: $break-small) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+h1 {
+  font-weight: lighter;
+}
+
+body {
+  background-color: $background;
+  color: $text;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+}
+
+hr {
+  width: 100%;
+  max-width: $max-container-width;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, $divider-out, $divider-in, $divider-out);
+}
+
+input {
+  padding: 10px;
+  border: none;
+  border-bottom: solid 2px $input;
+  background-color: $input;
+  transition: border 0.5s ease-in-out;
+  color: $text;
+  outline: none;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+input:focus {
+  border-bottom: solid 2px $input-focus;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }

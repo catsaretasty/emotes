@@ -1,7 +1,9 @@
-fs = require('fs');
 module.exports = config:
   files:
-    javascripts: joinTo: 'app.js'
-    stylesheets: joinTo: 'app.css'
+    javascripts: joinTo: 'emotes.js'
+    stylesheets: joinTo: 'emotes.css'
   npm:
     enabled: true
+  overrides:
+    production:
+      sourceMaps: true

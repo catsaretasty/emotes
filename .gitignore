@@ -1,5 +1,5 @@
 # dont add build folder
 public
 
-#bad node modules
+# bad node modules
 node_modules

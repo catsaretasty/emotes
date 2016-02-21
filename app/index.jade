@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width,initial-scale=1')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='emotes.css')
+    title Tastycat Emotes
+  body
+    header.container.header
+      h1 Tastycat Emotes
+      #search-box
+    hr
+    #emote-list.container
+      each emote in emotes
+        .emote-container
+          h4.emote-header #{emote.name}
+          .emote-image
+            noscript
+              img(src='#{emote.url}')
+            img.b-lazy(src='loading.gif', data-src='#{emote.url}')
+    script(src='emotes.js')
+    script.
+      require('emotes').init();
