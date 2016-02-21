@@ -50,6 +50,11 @@ $input-focus: #83838B;
   }
 }
 
+// disable loaders by default for noscript
+img[src='loading.gif'] {
+  display: none;
+}
+
 a {
   color: $text;
   font-weight: bold;
