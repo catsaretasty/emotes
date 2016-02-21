@@ -5,9 +5,9 @@ import Blazy from 'blazy';
 var App = {
     bLazy: new Blazy(),
     init: function init() {
-        const search = createSearchBox(document.querySelector('#search-box'));
-        const emote_list_parent = document.querySelector('#emote-list');
+        const emote_list_parent = document.querySelector('#emotes');
         const emotes = parseEmoteElements(emote_list_parent.children);
+        const search = createSearchBox(document.querySelector('#search-box'));
 
         search.oninput = () => {
             emotes.map(emote => {
