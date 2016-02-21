@@ -4,6 +4,3 @@ module.exports = config:
     stylesheets: joinTo: 'emotes.css'
   npm:
     enabled: true
-  overrides:
-    production:
-      sourceMaps: true
