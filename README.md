@@ -1,20 +1,27 @@
-# emotes
-emotes from the old tastyplug extension
+# Emotes
+Emotes from the old tastyplug extension.
 
-## building
-you need node.js and npm.
-after you `npm install` in the directory, run `npm run build`
+## Building
+You need node.js and npm.
+After you `npm install` in the project directory, run `npm run build`.
+You should now have the project built in the `public` folder.
 
-## about
-so you put files in the `emotes/` folder in whatever subdirectory you want
-the filename should be something like `butts.png` if i want to make an emote called butts.  you should only have A-Z (a-z), 0-9, \_, or - in the filename.  that means that if i want to make a `butts!` emote, i would name the file something like `butts_bang.png` and create a file called `butts_bang.png.txt` in the same directory with what i want to call the emote (so it would only have `butts!` inside).  Otherwise, if you are only using the characters i listed earlier, the emote name will be automatically pulled from the filename.
+## Adding emotes
+Put files in the `emotes/` folder in whatever subdirectory you want.
+The filename would be something like `butts.png` if I wanted to make an emote called butts.
+You should only have a-z, 0-9, \_, or - in the filename (uppercase is fine).
+That means that if I want to make a `butts!` emote, I would name the file something like `butts_bang.png`
+and create a file called `butts_bang.png.txt` in the same directory with what I want to call the emote
+(so it would only contain `butts!` inside).  Otherwise, if you are only using the characters I listed earlier,
+the emote name will be automatically pulled from the filename.
 
-currently files (emotes) with the same name will overwrite eachother, so dont do that until i get un-lazy.  also other crap probably isnt working or is broken, but im lazy.  will come back to it later maybe
+Currently files (emotes) with the same name will overwrite each other, so don't do that until I get un-lazy.
+Also, other crap probably isn't working or is broken, but I'm lazy.  Will come back to it later maybe?
 
-## format
-there are 2 formats created when running the build.
+## Format
+There are 3 formats created when running the build.
 
-the first in the `emotes.json` file:
+The first is the `emotes.json` file:
 ```json
 {
   "emotes": {
@@ -26,7 +33,7 @@ the first in the `emotes.json` file:
 }
 ```
 
-the second in the `emotes-full.json` file:
+The second is the `emotes-full.json` file:
 ```json
 {
   "emotes": {
@@ -50,4 +57,24 @@ the second in the `emotes-full.json` file:
 }
 ```
 
-both of these files can be found at `https://emotes.tastycat.org/emotes.json` and `https://emotes.tastycat.org/emotes-full.json` (when i put the server up)
+The last is the `emotes-data.json` file:
+```json
+[
+  {
+    "name":"AngryMittens",
+    "url":"https://emotes.tastycat.org/emotes/cats/AngryMittens.png",
+    "height":35,
+    "width":36
+  },
+  {
+    "name":"Basssss",
+    "url":"https://emotes.tastycat.org/emotes/cats/Basssss.png",
+    "height":35,
+    "width":36
+  },
+  ...
+]
+```
+
+All of these files can be found at `https://emotes.tastycat.org/<jsonfile>`
+(so like `https://emotes.tastycat.org/emotes.json`).
