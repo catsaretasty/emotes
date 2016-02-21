@@ -1,10 +1,8 @@
-var FS = require('q-io/fs');
 var path = require('path');
-var recursive = require('recursive-readdir');
 var Promise = require('bluebird');
+var imageSize = require('image-size');
+var recursive = require('recursive-readdir');
 var fs = Promise.promisifyAll(require('fs-extra'));
-var sizeOf = require('image-size');
-var jade = require('jade');
 
 var base_url = 'https://emotes.tastycat.org/';
 
@@ -30,13 +28,23 @@ function matchEmoteAltnames(files) {
             return file;
         }, files[i]);
 
-        //console.log(f + ' - ' + f + '.txt')
-
         promises.push(f.then(function (f) {
-            return Promise.all([f, FS.exists(f + '.txt')]);
+            return Promise.all([f, doesFileExist(f)]);
         }));
     }
     return Promise.all(promises);
+}
+
+function doesFileExist(f) {
+    return fs.statAsync(f + '.txt')
+        .then(function (stat) {
+            return stat.isFile();
+        }).catch(function (e) {
+            if (e.code !== 'ENOENT') {
+                console.error('file error: ', e.code)
+            }
+            return false;
+        })
 }
 
 function getEmotes(emote_promises) {
@@ -74,7 +82,7 @@ function makeEmoteLists(emotes) {
         addToEmoteList(emote, emote_list);
 
         // full payload is an object containing more info, like file dimensions
-        var dims = sizeOf(emote.file);
+        var dims = imageSize(emote.file);
         emote.payload = {url: emote.payload, height: dims.height, width: dims.width};
         addToEmoteList(emote, emote_list_full);
 
@@ -96,7 +104,6 @@ function makeEmoteLists(emotes) {
     writeEmoteList(emote_list, 'emotes.json');
     writeEmoteList(emote_list_full, 'emotes-full.json');
     writeEmoteList(emote_list_data, 'emotes-data.json');
-
 
     return emote_list_data;
 }
@@ -121,23 +128,24 @@ fs.ensureDirAsync(output_dir)
     .then(makeEmoteDisplayPage);
 
 function makeEmoteDisplayPage(emotes) {
-    var css = fs.readFileSync(output_dir + 'emotes.css');
-    var index = jade.renderFile('app/index.jade', {emotes: emotes, css: css});
-    var noscript = jade.renderFile('app/noscript.jade', {emotes: emotes, css: css});
+    var jade = require('jade');
 
-    fs.outputFileAsync(output_dir + 'index.html', index)
-        .then(function (err) {
-            if (err) {
-                console.error(err);
-            }
-            console.log('wrote display page!');
-        });
-    fs.outputFileAsync(output_dir + 'noscript/index.html', noscript)
-        .then(function (err) {
-            if (err) {
-                console.error(err);
-            }
-            console.log('wrote noscript display page!');
-        });
-    return index;
+    var css = fs.readFileSync(output_dir + 'emotes.css');
+    var display = jade.renderFile('app/index.jade', {emotes: emotes, css: css});
+    var noscript_display = jade.renderFile('app/noscript.jade', {emotes: emotes, css: css});
+
+    writePublicFile('index.html', display);
+    writePublicFile('noscript/index.html', noscript_display);
+
+    return display;
 }
+
+var writePublicFile = function(file, content) {
+    fs.outputFileAsync(output_dir + file, content)
+        .then(function (err) {
+            if (err) {
+                console.error(err);
+            }
+            console.log('wrote ' + output_dir + file + '!');
+        });
+};

@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "node node_modules/brunch/bin/brunch build --production && node build.js"
+    "build": "node node_modules/brunch/bin/brunch build --production && node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/catsaretasty/emotes#readme",
   "dependencies": {
+    "babel-register": "^6.5.2",
     "blazy": "^1.5.2",
     "bluebird": "^3.2.1",
     "fs-extra": "^0.26.5",
