@@ -19,10 +19,6 @@ html
         h3 Hi, JavaScript-disabled user! The images are usually lazy-loaded with JavaScript. Turn on JavaScript
           |  to view, or #[a(href='noscript/') visit the noscript page]. This might slow your browser, since all
           |  of the images are loaded at once (currently about 5MB).
-    #emotes.container
-      each emote in emotes
-        .emote-container
-          h4.emote-header #{emote.name}
-          .emote-image
-            img.b-lazy(src='loading.gif', data-src='#{emote.url}', alt="#{emote.name}")
+    .loader.container Loading emotes...
+    #emotes.container(style='display:none')
     script(async, defer, src='emotes.js', onload='require("emotes").init()')
