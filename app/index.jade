@@ -19,5 +19,5 @@ html
           .emote-image
             noscript
               img(src='#{emote.url}')
-            img.b-lazy(src='loading.gif', data-src='#{emote.url}')
+            img.b-lazy(src='loading.gif', data-src='#{emote.url}', alt="#{emote.name}")
     script(async, defer, src='emotes.js', onload='require("emotes").init()')
