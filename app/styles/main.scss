@@ -96,3 +96,20 @@ input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; }
 input:focus::-moz-placeholder { color:transparent; }
 input:focus:-ms-input-placeholder { color:transparent; }
+
+#noscript {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9001;
+  height: 100%;
+  width: 100%;
+  background: $background;
+  h3 {
+    max-width: $max-container-width;
+    padding: 1rem;
+  }
+}

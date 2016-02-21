@@ -15,8 +15,10 @@ html
       #search-box
     hr
     noscript
-      h1 Hi, JavaScript-disabled user!  The images below won't load without JavaScript.  Turn on JavaScript
-        |  to view, or #[a(href='noscript/') visit the noscript page] (this might hurt your browser).
+      #noscript
+        h3 Hi, JavaScript-disabled user! The images are usually lazy-loaded with JavaScript. Turn on JavaScript
+          |  to view, or #[a(href='noscript/') visit the noscript page]. This might slow your browser, since all
+          |  of the images are loaded at once (currently about 5MB).
     #emotes.container
       each emote in emotes
         .emote-container
