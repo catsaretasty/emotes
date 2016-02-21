@@ -30,7 +30,7 @@ function createSearchBox(parent) {
     let search = document.createElement('input');
     search.id = 'search';
     search.type = 'text';
-    search.placeholder = 'search here';
+    search.placeholder = 'search emotes';
     search.onkeydown = event => {
         // hitting escape should clear input
         if (event.which == 27) {
