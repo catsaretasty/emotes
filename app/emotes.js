@@ -3,7 +3,7 @@
 import Blazy from 'blazy';
 
 var App = {
-    bLazy: new Blazy(),
+    bLazy: new Blazy({offset: 1000}),
     init: function init() {
         const emote_list_parent = document.querySelector('#emotes');
         const emotes = parseEmoteElements(emote_list_parent.children);
