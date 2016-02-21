@@ -41,6 +41,20 @@ $input-focus: #83838B;
   }
 }
 
+.title {
+  justify-content: center;
+  margin-bottom: 1rem;
+  text-align: center;
+  h1 {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $text;
+  font-weight: bold;
+}
+
 h1 {
   font-weight: lighter;
 }
