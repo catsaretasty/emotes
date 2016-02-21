@@ -18,7 +18,7 @@ var App = {
                 }
             });
 
-            emote_list_parent.style.justifyContent = (search.value) ? 'space-between' : 'center';
+            emote_list_parent.style.justifyContent = (search.value) ? 'center' : 'space-between';
             this.bLazy.revalidate();
         };
     }
