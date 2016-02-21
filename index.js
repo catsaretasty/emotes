@@ -121,7 +121,8 @@ fs.ensureDirAsync(output_dir)
     .then(makeEmoteDisplayPage);
 
 function makeEmoteDisplayPage(emotes) {
-    var html = jade.renderFile('app/index.jade', {emotes: emotes});
+    var css = fs.readFileSync(output_dir + 'emotes.css');
+    var html = jade.renderFile('app/index.jade', {emotes: emotes, css: css});
 
     fs.outputFileAsync(output_dir + 'index.html', html)
         .then(function (err) {

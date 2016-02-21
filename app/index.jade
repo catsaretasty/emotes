@@ -3,9 +3,9 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width,initial-scale=1')
-    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='emotes.css')
     title Tastycat Emotes
+    style(type='text/css').
+      #{css}
   body
     header.container.header
       h1 Tastycat Emotes
@@ -20,3 +20,15 @@ html
               img(src='#{emote.url}')
             img.b-lazy(src='loading.gif', data-src='#{emote.url}')
     script(async, defer, src='emotes.js', onload='require("emotes").init()')
+    script(type='text/javascript').
+      WebFontConfig = {
+        google: {families: ['Open+Sans:300:latin']}
+      };
+      (function () {
+        var wf = document.createElement('script');
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
