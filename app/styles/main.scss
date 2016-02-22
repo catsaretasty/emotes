@@ -1,4 +1,5 @@
 @import 'emote';
+@import 'flexbox';
 
 // Sizes
 $break-small: 480px;
@@ -16,19 +17,11 @@ $text: #A8A8AD;
 $input: #44444B;
 $input-focus: #83838B;
 
-@mixin display-flex {
-  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-}
-
 .container {
-  @include display-flex;
+  @include flexbox;
+  @include flex-flow(row wrap);
   margin: 0 auto;
   clear: both;
-  flex-flow: row wrap;
   width: 100%;
   @media screen and (min-width: $break-large) {
     width: $max-container-width;
@@ -36,21 +29,21 @@ $input-focus: #83838B;
 }
 
 #emotes {
-  justify-content: space-between;
+  @include justify-content(space-between);
 }
 
 .header {
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
   @media screen and (min-width: $break-small) {
-    flex-direction: row;
-    justify-content: space-between;
+    @include flex-direction(row);
+    @include justify-content(space-between);
   }
 }
 
 .title {
-  justify-content: center;
+  @include justify-content(center);
   margin-bottom: 1rem;
   text-align: center;
   h1 {
@@ -112,9 +105,9 @@ input:focus::-moz-placeholder { color:transparent; }
 input:focus:-ms-input-placeholder { color:transparent; }
 
 #noscript {
-  @include display-flex;
-  align-items: center;
-  justify-content: center;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
   position: fixed;
   top: 0;
   left: 0;
