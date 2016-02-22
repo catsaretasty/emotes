@@ -16,8 +16,8 @@ const emote_list_data = [];
 
 function getEmoteFiles() {
     const deferred = Promise.defer();
-    // ignore files that end with *.txt
-    recursive('./emotes', ['*.txt'], (err, files) => {
+    // ignore files that end with *.json
+    recursive('./emotes', ['*.json'], (err, files) => {
         deferred.resolve(files);
     });
     return deferred.promise;
@@ -34,7 +34,7 @@ function matchEmoteAltnames(files) {
 }
 
 function doesFileExist(f) {
-    return fs.statAsync(`${f}.txt`)
+    return fs.statAsync(`${f}.json`)
         .then(stat => stat.isFile())
         .catch(e => {
             if (e.code !== 'ENOENT') {
@@ -54,7 +54,15 @@ function getEmotes(emote_promises) {
 }
 
 function getEmote(file, alt_name_exists) {
-    const name = alt_name_exists ? fs.readFileAsync(`${file}.txt`) : path.parse(file).name;
+    let name;
+
+    if (alt_name_exists) {
+        name = fs.readJsonAsync(`${file}.json`)
+            .then(json => json.name);
+    } else {
+        name = path.parse(file).name;
+    }
+
     return [file, name];
 }
 
