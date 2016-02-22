@@ -38,7 +38,8 @@ function doesFileExist(f) {
         .then(stat => stat.isFile())
         .catch(e => {
             if (e.code !== 'ENOENT') {
-                console.error('file error: ', e.code)
+                console.error('metadata file error: ', e.code);
+                process.exit(1);
             }
             return false;
         })
@@ -105,7 +106,9 @@ function makeEmoteLists(emotes) {
         fs.copyAsync(emote.file, output_dir + emote.file)
             .then(err => {
                 if (err) {
-                    console.error(err);
+                    console.error('Could not copy emote to public directory');
+                    console.error(emote.file + ' had ' + err);
+                    process.exit(1);
                 }
             });
     }
@@ -118,7 +121,8 @@ function makeEmoteLists(emotes) {
 
 function addToEmoteList(name, payload, emote_list) {
     if (name in emote_list.emotes) {
-        console.error('Two emotes have the same name!')
+        console.error('Two emotes have the same name! They both tried to use: ' + name);
+        process.exit(1);
     } else {
         emote_list.emotes[name] = payload;
     }
@@ -145,7 +149,9 @@ var writePublicFile = (file, content) => {
     fs.outputFileAsync(output_dir + file, content)
         .then(err => {
             if (err) {
-                console.error(err);
+                console.error('Could not write display file: ' + file);
+                console.error('had error: ' + err);
+                process.exit(1);
             }
             console.log(`wrote ${output_dir}${file}!`);
         });
