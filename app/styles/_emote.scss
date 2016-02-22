@@ -8,12 +8,7 @@
 }
 
 .emote-image {
-  @include flexbox;
   @include justify-content(center);
-  @include align-items(center);
-  @include flex(auto);
-  height: 100%;
-  width: 100%;
 }
 
 .emote-header {
