@@ -120,6 +120,10 @@ function makeEmoteLists(emotes) {
 }
 
 function addToEmoteList(name, payload, emote_list) {
+    if(name === undefined) {
+        console.error('Emote name was undefined!');
+        process.exit(1);
+    }
     if (name in emote_list.emotes) {
         console.error('Two emotes have the same name! They both tried to use: ' + name);
         process.exit(1);
