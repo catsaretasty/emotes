@@ -5,7 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "node node_modules/brunch/bin/brunch build --production && node build/index.js"
+    "build": "node node_modules/brunch/bin/brunch build --production && node build/index.js",
+    "test": "node node_modules/brunch/bin/brunch build && node build/index.js && echo \"\n\\033[0;32mSuccess!\\033[0m\""
   },
   "repository": {
     "type": "git",
