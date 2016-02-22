@@ -28,7 +28,7 @@ The correctly formatted json looks like below:
   ]
 }
 ```
-Note, that none of these are required, you are able to have all of them, some of them, one of them, or none
+Note that none of these are required, you are able to have all of them, some of them, one of them, or none
 (none means no file, or a file with an empty `{}` - but you're not a monster, are you?).
 
 Otherwise, if you are only using the characters I listed earlier,
