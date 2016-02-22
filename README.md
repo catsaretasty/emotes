@@ -95,5 +95,4 @@ The last is the `emotes-data.json` file:
 ]
 ```
 
-All of these files can be found at `https://emotes.tastycat.org/<jsonfile>`
-(so like `https://emotes.tastycat.org/emotes.json`).
+All of these files can be found at `https://emotes.tastycat.org/<jsonfile>`.
