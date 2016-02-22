@@ -113,7 +113,13 @@ function renderEmotes(emote_data) {
             requestAnimationFrame(() => {
                 loader.style.display = 'none';
                 container.style.display = '';
-                bLazy = new Blazy({offset: 1000})
+                bLazy = new Blazy({
+                    offset: 1000,
+                    error: ele => {
+                        ele.src = 'error.png';
+                        ele.parentNode.parentNode.children[0].style.color = '#aa0000';
+                    }
+                })
             });
         } else {
             setTimeout(hideLoader, 50);
