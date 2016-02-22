@@ -76,10 +76,15 @@ function renderEmotes(emote_data) {
     const emotes = emote_data.emotes;
     let loader = document.querySelector('.loader');
     let container = document.querySelector('#emotes');
-    let domDone = new Array(Object.keys(emote_data.emotes).length).fill(false);
+    let domDone = new Array(Object.keys(emote_data.emotes).length);
     let loadingImageLoaded = false;
     let domDoneIndex = 0;
     let list = [];
+
+    // fill array with false values
+    for (var i = 0; i < domDone.length; i++) {
+        domDone[i] = false;
+    }
 
     for (let key in emotes) {
         if (emotes.hasOwnProperty(key)) {
