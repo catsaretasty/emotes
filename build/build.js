@@ -54,37 +54,51 @@ function getEmotes(emote_promises) {
 }
 
 function getEmote(file, alt_name_exists) {
-    let name;
+    let metadata = {};
 
     if (alt_name_exists) {
-        name = fs.readJsonAsync(`${file}.json`)
-            .then(json => json.name);
+        metadata = fs.readJsonAsync(`${file}.json`)
+            .then(json => json);
     } else {
-        name = path.parse(file).name;
+        metadata.name = path.parse(file).name;
     }
 
-    return [file, name];
+    return [file, metadata];
 }
 
 function makeEmoteLists(emotes) {
     for (let i = 0; i < emotes.length; i++) {
-        const emote = {file: emotes[i][0], name: emotes[i][1].toString()};
+        const emote = {file: emotes[i][0], metadata: emotes[i][1]};
 
-        // default small payload is just a url string
-        emote.payload = base_url + emote.file;
-        addToEmoteList(emote, emote_list);
+        let mainCategory;
+        if ('mainCategory' in emote.metadata) {
+            mainCategory = emote.metadata.mainCategory;
+        } else {
+            mainCategory = /[^/]*$/.exec(path.parse(emote.file).dir)[0];
+        }
 
-        // full payload is an object containing more info, like file dimensions
+        let subCategories = [];
+        if ('subCategories' in emote.metadata && Array.isArray(emote.metadata.subCategories)) {
+            subCategories = emote.metadata.subCategories;
+        }
+
         const dims = imageSize(emote.file);
-        emote.payload = {url: emote.payload, height: dims.height, width: dims.width};
-        addToEmoteList(emote, emote_list_full);
-
         const emote_data = {
-            name: emote.name,
+            name: emote.metadata.name.toString(),
             url: base_url + emote.file,
             height: dims.height,
-            width: dims.width
+            width: dims.width,
+            mainCategory,
+            subCategories
         };
+
+        // default small payload is just a url string
+        let payload = emote_data.url;
+        addToEmoteList(emote_data.name, payload, emote_list);
+
+        // full payload is an object containing more info, like file dimensions
+        payload = emote_data;
+        addToEmoteList(emote_data.name, payload, emote_list_full);
 
         emote_list_data.push(emote_data);
 
@@ -102,11 +116,11 @@ function makeEmoteLists(emotes) {
     return emote_list_data;
 }
 
-function addToEmoteList(emote, emote_list) {
-    if (emote.name in emote_list.emotes) {
+function addToEmoteList(name, payload, emote_list) {
+    if (name in emote_list.emotes) {
         console.error('Two emotes have the same name!')
     } else {
-        emote_list.emotes[emote.name] = emote.payload;
+        emote_list.emotes[name] = payload;
     }
 }
 
