@@ -1,11 +1,12 @@
 # Emotes
 Emotes from the old TastyPlug extension.
-[![Build Status](https://travis-ci.org/catsaretasty/emotes.svg?branch=master)](https://travis-ci.org/catsaretasty/emotes)
 
 ## Building
 You need node.js and npm.
 After you `npm install` in the project directory, run `npm run build`.
 You should now have the project built in the `public/` folder.
+
+[![Build Status](https://travis-ci.org/catsaretasty/emotes.svg?branch=master)](https://travis-ci.org/catsaretasty/emotes)
 
 ## Adding emotes
 Put files in the `emotes/` folder in whatever subdirectory you want.
