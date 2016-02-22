@@ -13,8 +13,23 @@ The filename would be `butts.png` if I wanted to make an emote called butts.
 You should only have a-z, 0-9, \_, or - in the filename (uppercase is fine).
 
 That means that if I want to make a `butts!` emote, I would name the file something like `butts_bang.png`
-and create a file called `butts_bang.png.txt` in the same directory with what I want to call the emote
-(so it would only contain `butts!` inside).
+and create a file called `butts_bang.png.json` in the same directory with the properly formatted json.
+The correctly formatted json looks like below:
+
+```json
+{
+  "name": "butts!",
+  "mainCategory": "buttstuff",
+  "subCategories": [
+    "rectum",
+    "Hershey Highway",
+    "Moneymaker",
+    "mud flaps"
+  ]
+}
+```
+Note, that none of these are required, you are able to have all of them, some of them, one of them, or none
+(none means no file, or a file with an empty `{}` - but you're not a monster, are you?).
 
 Otherwise, if you are only using the characters I listed earlier,
 the emote name will be automatically pulled from the filename.
