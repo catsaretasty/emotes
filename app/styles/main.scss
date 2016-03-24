@@ -13,6 +13,7 @@ $divider-in: rgba(73, 73, 84, 1);
 
 $background: #1c1c1f;
 $text: #A8A8AD;
+$error-text: #aa0000;
 
 $input: #44444B;
 $input-focus: #83838B;
@@ -103,6 +104,10 @@ input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; }
 input:focus::-moz-placeholder { color:transparent; }
 input:focus:-ms-input-placeholder { color:transparent; }
+
+.failed-load {
+  color: $error-text;
+}
 
 #noscript {
   @include flexbox;

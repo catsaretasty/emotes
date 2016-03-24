@@ -117,7 +117,10 @@ function renderEmotes(emote_data) {
                     offset: 1000,
                     error: ele => {
                         ele.src = 'error.png';
-                        ele.parentNode.parentNode.children[0].style.color = '#aa0000';
+                        ele.parentNode.parentNode.children[0].classList.add('failed-load')
+                    },
+                    success: ele => {
+                        ele.parentNode.parentNode.children[0].classList.remove('failed-load')
                     }
                 })
             });
