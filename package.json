@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "build": "./node_modules/.bin/brunch build --production && node build/index.js",
-    "deploy": "./deploy.sh",
+    "deploy": "npm run build && ./deploy.sh",
     "test": "npm run build && echo \"\n\\033[0;32mSuccess!\\033[0m\""
   },
   "repository": {
