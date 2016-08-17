@@ -1,5 +1,5 @@
 # Emotes
-Emotes from the old TastyPlug extension.
+Emotes from the TastyPlug extension.
 
 ## Building
 You need node.js and npm.
