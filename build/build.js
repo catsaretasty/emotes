@@ -6,7 +6,7 @@ const imageSize = require('image-size');
 const recursive = require('recursive-readdir');
 const fs = Promise.promisifyAll(require('fs-extra'));
 
-const base_url = 'https://emotes.tastycat.org/';
+const base_url = 'https://catsaretasty.github.io/';
 
 const output_dir = './public/';
 

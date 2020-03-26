@@ -53,9 +53,9 @@ The first is the `emotes.json` file:
 ```json
 {
   "emotes": {
-    "AngryMittens":"https://emotes.tastycat.org/emotes/cats/AngryMittens.png",
-    "Basssss":"https://emotes.tastycat.org/emotes/cats/Basssss.png",
-    "BoopBlock":"https://emotes.tastycat.org/emotes/cats/BoopBlock.png",
+    "AngryMittens":"https://catsaretasty.github.io/emotes/emotes/cats/AngryMittens.png",
+    "Basssss":"https://catsaretasty.github.io/emotes/emotes/cats/Basssss.png",
+    "BoopBlock":"https://catsaretasty.github.io/emotes/emotes/cats/BoopBlock.png",
     ...
   }
 }
@@ -66,17 +66,17 @@ The second is the `emotes-full.json` file:
 {
   "emotes": {
     "AngryMittens": {
-      "url":"https://emotes.tastycat.org/emotes/cats/AngryMittens.png",
+      "url":"https://catsaretasty.github.io/emotes/emotes/cats/AngryMittens.png",
       "height":35,
       "width":36
     },
     "Basssss": {
-      "url":"https://emotes.tastycat.org/emotes/cats/Basssss.png",
+      "url":"https://catsaretasty.github.io/emotes/emotes/cats/Basssss.png",
       "height":35,
       "width":36
     },
     "BoopBlock": {
-      "url":"https://emotes.tastycat.org/emotes/cats/BoopBlock.png",
+      "url":"https://catsaretasty.github.io/emotes/emotes/cats/BoopBlock.png",
       "height":35,
       "width":35
     },
@@ -90,13 +90,13 @@ The last is the `emotes-data.json` file:
 [
   {
     "name":"AngryMittens",
-    "url":"https://emotes.tastycat.org/emotes/cats/AngryMittens.png",
+    "url":"https://catsaretasty.github.io/emotes/emotes/cats/AngryMittens.png",
     "height":35,
     "width":36
   },
   {
     "name":"Basssss",
-    "url":"https://emotes.tastycat.org/emotes/cats/Basssss.png",
+    "url":"https://catsaretasty.github.io/emotes/emotes/cats/Basssss.png",
     "height":35,
     "width":36
   },
@@ -104,4 +104,4 @@ The last is the `emotes-data.json` file:
 ]
 ```
 
-All of these files can be found at `https://emotes.tastycat.org/<jsonfile>`.
+All of these files can be found at `https://catsaretasty.github.io/emotes/<jsonfile>`.
